@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: "http://localhost:8080"
+  apiUrl: "https://guitarchive-service-4085e6c7378c.herokuapp.com/"
 };
 
 /*
