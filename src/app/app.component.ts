@@ -192,7 +192,7 @@ export class AppComponent implements OnInit{
 
     onAddGuitar(formName: NgForm) {
       this.imageUploadSubmit?.nativeElement.click();
-      formName.value.imageURL = "./assets/" + this.selectedImageString;
+      formName.value.imageURL = "https://guitarchive-service-4085e6c7378c.herokuapp.com/" + this.selectedImageString;
       this.addGuitar(formName.value);
       this.isAddModal = false;
       formName.resetForm();
