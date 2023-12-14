@@ -7,7 +7,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 
 // Catch all other routes and serve 'index.html'
 app.get('/*', (req, res) => {
-  res.sendFile('index.html', { root: path.join(__dirname, 'dist') });
+  res.sendFile('guitarchive_frontend/index.html', { root: path.join(__dirname, 'dist') });
 });
 
 // Start the server
