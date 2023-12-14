@@ -1,0 +1,216 @@
+#nav-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  background-color: #ffffffb3;
+  backdrop-filter: blur(8px);
+  border-bottom: solid 1px #dfe7ef;
+  text-align: center;
+  margin-bottom: 20px;
+  position: fixed;
+  z-index: 1000;
+}
+#nav-container img{
+  width: 135px;
+}
+#main-container{
+  padding-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#add-button{
+  display: block;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+#add-button-mobile{
+  display: none;
+}
+.card-container{
+  margin: 10px 10px;
+}
+.card-container img{
+  width: 250px;
+  height: 250px;
+  padding: 10px;
+  border-radius: 15px;
+  object-fit: cover;
+  cursor: pointer;
+}
+#guitar-detail-options-container{
+  position:absolute;
+  top:10px;
+  right: 10px;
+  display:flex;
+}
+#guitar-detail-options-container button:nth-child(even){
+  margin: 0 10px;
+}
+.guitar-detail-container{
+  background-color: #f8f9ffb5;
+  border: solid 1px #dfe7ef;
+  border-radius: 10px;
+  padding: 50px 50px;
+  position: relative;
+  top: 150px;
+  width: 75%;
+  margin: auto;
+  box-shadow: 0 5px 5px #d7dbe0;
+  display: flex;
+  column-gap: 10px;
+  color: #495057;
+}
+.guitar-detail-left{
+  width: 50%;
+}
+.guitar-detail-right{
+  width: 50%;
+}
+.guitar-detail-right p{
+  margin: 10px 0;
+  color: #7a8188;
+}
+.guitar-detail-right h2{
+  margin: 5px 0;
+}
+.guitar-detail-left img{
+  max-width: 100%;
+  border-radius: 5px;
+}
+.showModal{
+  visibility: visible !important;
+  opacity: 1 !important;
+  transition: opacity .5s;
+}
+.delete-form-id{
+  display: none;
+}
+.guitar-detail, .update-modal, .add-modal,.delete-modal{
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  overflow: scroll;
+  width: 100%;
+  background-color: #dddee5b3;
+  backdrop-filter: blur(8px);
+  transition: opacity .2s;
+}
+.update-modal{
+  padding-bottom: 50px;
+}
+.add-modal, .guitar-detail{
+  padding-bottom: 200px;
+}
+.main-form-container{
+  background-color: #f8f9ffb5;
+  border: solid 1px #dfe7ef;
+  border-radius: 10px;
+  padding: 50px 50px;
+  position: relative;
+  top: 150px;
+  width: 50%;
+  margin: auto;
+  box-shadow: 0 5px 5px #d7dbe0;
+  color: #495057;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.main-form-container p{
+  margin: 10px 0;
+}
+.main-form-container input, .image-upload-form input {
+  border: solid 1px #d7dfe5;
+  padding: 10px 10px;
+  width: 170px;
+  border-radius: 5px;
+}
+.add-form-imageData{
+  display: none;
+}
+.add-form-submit{
+  position: absolute;
+  bottom: 10px;
+  width: 170px;
+}
+.image-upload-form{
+  margin-bottom: 20px;
+}
+.image-upload-form input[type="file"] {
+  display: none;
+}
+.image-upload-submit {
+  display: none;
+}
+.main-form-close{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+.guitarForm-file-upload{
+    border: solid 1px #d7dfe5;
+    padding: 10px 10px;
+    width: 170px;
+    border-radius: 5px;
+    display: inline-block;
+    cursor: pointer;
+    font-weight: bold;
+    color: #2563eb;
+}
+.guitar-form-image img{
+  width: 100px;
+  border-radius: 10px;
+}
+.submit-button{
+  text-align: center;
+}
+.submit-button button {
+  width: 170px;
+}
+
+
+@media only screen and (max-width: 600px){
+  #add-button{
+    display: none;
+  }
+  #add-button-mobile{
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+  }
+  .guitar-detail-container{
+    display:block;
+    padding-bottom: 80px;
+  }
+  .guitar-detail-left{
+    width: 100%;
+  }
+  .guitar-detail-right{
+    width: 100%;
+  }
+  .guitar-detail-left img{
+    max-width: 100%;
+    border-radius: 5px;
+  }
+  #guitar-detail-options-container{
+    position:absolute;
+    top: auto;
+    bottom:20px;
+    right: auto;
+    margin: auto;
+    display:flex;
+  }
+  #guitar-detail-options-container button:nth-child(even){
+    margin: 0 10px;
+  }
+}
+

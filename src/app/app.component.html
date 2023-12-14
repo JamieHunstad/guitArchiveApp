@@ -1,0 +1,153 @@
+<nav id="nav-container">
+  <div id="logo-container">
+    <img src="./assets/GuitArchive.svg">
+  </div>
+  <div id="add-button">
+    <p-button (click)="onOpenModal('add', null)" label="New Guitar" icon="pi pi-plus"></p-button>
+  </div>
+  <div id="add-button-mobile">
+    <p-button (click)="onOpenModal('add', null)" label="" icon="pi pi-plus"></p-button>
+  </div>
+</nav>
+<section id="main-container">
+  <div *ngFor="let guitar of guitars" class="card-container">
+    <p-card header="{{guitar.nickname}}" subheader="{{guitar.make + ' ' +  guitar.model}}" [style]="{ width: '250px' }">
+      <ng-template pTemplate="header">
+        <img (click)="onOpenModal('description',guitar)" alt="Card" src="{{guitar.imageURL}}" />
+      </ng-template>
+      <ng-template pTemplate="footer">
+        <p-button (click)="onOpenModal('update', guitar)" label="" icon="pi pi-pencil"  styleClass="p-button-outlined"></p-button>
+        <p-button (click)="onOpenModal('delete', guitar)" label="" icon="pi pi-times" styleClass="p-button-danger" [style]="{ 'margin-left': '.5em' }"></p-button>
+      </ng-template>
+    </p-card>
+  </div>
+</section>
+<section [ngClass]="{'showModal': isDescriptionModal}" class="guitar-detail">
+  <div class="guitar-detail-container">
+    <div class="guitar-detail-left">
+      <img src="{{editGuitar?.imageURL}}">
+    </div>
+    <div class="guitar-detail-right">
+      <p>{{editGuitar?.nickname}}</p>
+      <h2>{{editGuitar?.make + ' ' + editGuitar?.model}}</h2>
+      <div class="guitar-detail-content">
+        <p><span class="text-bold">Year:</span> {{editGuitar?.year}}</p>
+        <p><span class="text-bold">Color:</span> {{editGuitar?.color}}</p>
+        <p><span class="text-bold">Description:</span><br>{{editGuitar?.description}}</p>
+      </div>
+    </div>
+    <div id="guitar-detail-options-container">
+      <button (click)="onOpenModal('update', null)" pButton type="button" label="Update"></button>
+      <button (click)="onOpenModal('delete', null)" pButton type="button" label="Delete" class="p-button-danger"></button>
+      <p-button (click)="onCloseModal()" label="" icon="pi pi-times"  styleClass="p-button-outlined p-button-secondary"></p-button>
+    </div>
+  </div>
+</section>
+<section class="update-modal" [ngClass]="{'showModal': isUpdateModal}">
+  <div class="main-form-container">
+    <div class="main-form-close">
+      <p-button (click)="onCloseModal()" label="" icon="pi pi-times" styleClass="p-button-secondary"></p-button>
+    </div>
+    <div class="guitar-form-image">
+      <img src="{{editGuitar?.imageURL}}">
+    </div>
+    <form id="update-form" #updateForm="ngForm" (ngSubmit)="onUpdateGuitar(updateForm)">
+      <p class="delete-form-id">
+        <input placeholder="id" type="text" [(ngModel)]="editGuitarId"  name="id" ngModel>
+      </p>
+      <p>
+        <input placeholder="Nickname" type="text" [(ngModel)]="editGuitarNickname" name="nickname" ngModel>
+      </p>
+      <p>
+        <input placeholder="Make" type="text" [(ngModel)]="editGuitarMake" name="make" ngModel>
+      </p>
+      <p>
+        <input placeholder="Model" type="text" [(ngModel)]="editGuitarModel" name="model" ngModel>
+      </p>
+      <p>
+        <input placeholder="Year" type="text" [(ngModel)]="editGuitarYear" name="year" ngModel>
+      </p>
+      <p>
+        <input placeholder="Color" type="text" [(ngModel)]="editGuitarColor" name="color" ngModel>
+      </p>
+      <p>
+        <input placeholder="Description" [(ngModel)]="editGuitarDescription" type="text" name="description" ngModel>
+      </p>
+      <p class="add-form-imageData">
+        <input placeholder="Image" type="text" [(ngModel)]="editGuitarImageURL" name="imageURL" ngModel>
+      </p>
+      <p class="submit-button">
+        <p-button type="submit" label="Update" icon="pi pi-check" styleClass="p-button-success"></p-button>
+      </p>
+    </form>
+    <div class="image-upload-form">
+      <form #updateImage="ngForm" (ngSubmit)="onUpdateImage(updateImage)">
+        <p>
+          <label for="guitar_img_update" class="guitarForm-file-upload">Edit Image
+            <input #updateImageSelected (change)="updateConvertFileToString()" type="file" id="guitar_img_update" accept="image/png, image/jpeg, image/webp" />
+            <input #updateImageUploadSubmit class="image-upload-submit" type="submit">
+          </label>
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+<section class="add-modal" [ngClass]="{'showModal': isAddModal}">
+  <div class="main-form-container">
+    <div class="main-form-close">
+      <p-button (click)="onCloseModal()" label="" icon="pi pi-times" styleClass="p-button-secondary"></p-button>
+    </div>
+    <form id="add-form" #addForm="ngForm" (ngSubmit)="onAddGuitar(addForm)">
+      <p>
+        <input placeholder="Nickname" type="text" name="nickname" ngModel>
+      </p>
+      <p>
+        <input placeholder="Make" type="text" name="make" ngModel>
+      </p>
+      <p>
+        <input placeholder="Model" type="text" name="model" ngModel>
+      </p>
+      <p>
+        <input placeholder="Year" type="text" name="year" ngModel>
+      </p>
+      <p>
+        <input placeholder="Color" type="text" name="color" ngModel>
+      </p>
+      <p>
+        <input placeholder="Description" type="text" name="description" ngModel>
+      </p>
+      <p class="add-form-imageData">
+        <input placeholder="Image" type="text" name="imageURL" ngModel>
+      </p>
+      <div class="add-form-submit">
+        <p class="submit-button">
+          <p-button type="submit" label="Add" icon="pi pi-check" styleClass="p-button-success"></p-button>
+        </p>
+      </div>
+    </form>
+    <div class="image-upload-form">
+      <form #addImage="ngForm" (ngSubmit)="onAddImage(addImage)">
+        <p>
+          <label for="guitar_img_add" class="guitarForm-file-upload">Edit Image
+            <input #imageSelected (change)="convertFileToString()" type="file" id="guitar_img_add" accept="image/png, image/jpeg, image/webp" />
+            <input #imageUploadSubmit class="image-upload-submit" type="submit">
+          </label>
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+<section class="delete-modal" [ngClass]="{'showModal': isDeleteModal}">
+  <div class="main-form-container">
+    <form id="delete-form" #deleteForm="ngForm" (ngSubmit)="onDeleteGuitar(deleteForm)">
+      <p>Are you sure would like to delete?</p>
+      <p class="delete-form-id">
+        <input placeholder="id" type="text" [(ngModel)]="editGuitarId"  name="id" ngModel>
+      </p>
+      <p class="submit-button">
+        <p-button type="submit" label="Yes" icon="pi pi-check" styleClass="p-button-success"></p-button>
+      </p>
+      <p-button (click)="onCloseModal()" label="No" icon="pi pi-times" styleClass="p-button-danger"></p-button>
+    </form>
+  </div>
+</section>
