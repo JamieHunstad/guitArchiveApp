@@ -4,7 +4,6 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "heroku-postbuild": "ng build"
@@ -43,7 +42,7 @@
     "karma-jasmine-html-reporter": "~1.7.0"
   },
   "engines": {
-    "node": "16.15.1",
+    "node": "^16.0.0",
     "npm": "8.11.0"
   }
 }
