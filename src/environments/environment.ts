@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: "https://guitarchive-service-4085e6c7378c.herokuapp.com/"
+  apiUrl: "https://guitarchive-service-4085e6c7378c.herokuapp.com"
 };
 
 /*
