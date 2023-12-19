@@ -90,16 +90,6 @@ export class AppComponent implements OnInit{
     })
     }
 
-  public addImage(formValue: any):void{
-    this.guitarService.addImage(formValue).subscribe({
-      next: (response: any) =>{
-        console.log("ran");
-      },
-      error: (error: HttpErrorResponse) =>{
-        alert(error.message);
-      }
-    })
-  }
 
     onOpenModal(type: string, guitar: Guitar | null): void {
       switch(type){
@@ -158,32 +148,6 @@ export class AppComponent implements OnInit{
       }
     }
 
-  updateConvertFileToString(): void{
-    // @ts-ignore
-    let inputElement: HTMLInputElement = this.updateSelectedImage.nativeElement;
-    // @ts-ignore
-    let files: FileList = inputElement.files;
-
-    if (files.length > 0) {
-      let selectedFile: File = files[0];
-      this.imageFile = selectedFile;
-      this.selectedImageString = selectedFile.name;
-    } else{
-      return undefined;
-    }
-  }
-
-    onAddImage(formName: NgForm){
-      const formData = new FormData();
-      formData.append('file', this.imageFile);
-      this.addImage(formData);
-    }
-
-  onUpdateImage(formName: NgForm){
-    const formData = new FormData();
-    formData.append('file', this.imageFile);
-    this.addImage(formData);
-  }
     onDeleteGuitar(formName: NgForm){
       let employeeId = formName.value.id;
       this.deleteGuitar(employeeId);
@@ -205,8 +169,5 @@ export class AppComponent implements OnInit{
     this.updateGuitar(formName.value);
     this.isUpdateModal = false;
     formName.resetForm();
-    }
-    onSubmit(formName: NgForm) {
-      console.log(formName.value);
     }
 }
