@@ -138,8 +138,6 @@
   display: none;
 }
 .add-form-submit{
-  position: absolute;
-  bottom: 10px;
   width: 170px;
 }
 .image-upload-form{
