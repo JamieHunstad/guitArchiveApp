@@ -133,21 +133,6 @@ export class AppComponent implements OnInit{
       this.isDescriptionModal = false;
     }
 
-    convertFileToString(): void{
-      // @ts-ignore
-      let inputElement: HTMLInputElement = this.selectedImage.nativeElement;
-      // @ts-ignore
-      let files: FileList = inputElement.files;
-
-      if (files.length > 0) {
-        let selectedFile: File = files[0];
-        this.imageFile = selectedFile;
-        this.selectedImageString = selectedFile.name;
-      } else{
-        return undefined;
-      }
-    }
-
     onDeleteGuitar(formName: NgForm){
       let employeeId = formName.value.id;
       this.deleteGuitar(employeeId);
@@ -155,17 +140,12 @@ export class AppComponent implements OnInit{
     }
 
     onAddGuitar(formName: NgForm) {
-      this.imageUploadSubmit?.nativeElement.click();
-      formName.value.imageURL = "https://guitarchive-service-4085e6c7378c.herokuapp.com/" + this.selectedImageString;
       this.addGuitar(formName.value);
       this.isAddModal = false;
       formName.resetForm();
     }
 
     onUpdateGuitar(formName: NgForm): void{
-    this.updateImageUploadSubmit?.nativeElement.click();
-    formName.value.imageURL = "./assets/" + this.selectedImageString;
-    console.log(formName.value);
     this.updateGuitar(formName.value);
     this.isUpdateModal = false;
     formName.resetForm();
