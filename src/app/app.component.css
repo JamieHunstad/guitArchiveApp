@@ -21,9 +21,7 @@
   align-items: center;
   flex-wrap: wrap;
 }
-.button-main{
-  padding: 10px;
-}
+
 #add-button{
   display: block;
   position: absolute;
