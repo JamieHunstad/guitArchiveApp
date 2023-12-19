@@ -3,10 +3,10 @@
     <img src="./assets/GuitArchive.svg">
   </div>
   <div id="add-button">
-    <p-button (click)="onOpenModal('add', null)" label="New Guitar" icon="pi pi-plus"></p-button>
+    <p-button class="button-main" (click)="onOpenModal('add', null)" label="New Guitar" icon="pi pi-plus"></p-button>
   </div>
   <div id="add-button-mobile">
-    <p-button (click)="onOpenModal('add', null)" label="" icon="pi pi-plus"></p-button>
+    <p-button class="button-main" (click)="onOpenModal('add', null)" label="" icon="pi pi-plus"></p-button>
   </div>
 </nav>
 <section id="main-container">
@@ -16,8 +16,8 @@
         <img (click)="onOpenModal('description',guitar)" alt="Card" src="{{guitar.imageURL}}" />
       </ng-template>
       <ng-template pTemplate="footer">
-        <p-button (click)="onOpenModal('update', guitar)" label="" icon="pi pi-pencil"  styleClass="p-button-outlined"></p-button>
-        <p-button (click)="onOpenModal('delete', guitar)" label="" icon="pi pi-times" styleClass="p-button-danger" [style]="{ 'margin-left': '.5em' }"></p-button>
+        <p-button class="button-main" (click)="onOpenModal('update', guitar)" label="" icon="pi pi-pencil"  styleClass="p-button-outlined"></p-button>
+        <p-button class="button-main" (click)="onOpenModal('delete', guitar)" label="" icon="pi pi-times" styleClass="p-button-danger" [style]="{ 'margin-left': '.5em' }"></p-button>
       </ng-template>
     </p-card>
   </div>
@@ -37,16 +37,16 @@
       </div>
     </div>
     <div id="guitar-detail-options-container">
-      <button (click)="onOpenModal('update', null)" pButton type="button" label="Update"></button>
-      <button (click)="onOpenModal('delete', null)" pButton type="button" label="Delete" class="p-button-danger"></button>
-      <p-button (click)="onCloseModal()" label="" icon="pi pi-times"  styleClass="p-button-outlined p-button-secondary"></p-button>
+      <button class="button-main" (click)="onOpenModal('update', null)" pButton type="button" label="Update"></button>
+      <button class="button-main" (click)="onOpenModal('delete', null)" pButton type="button" label="Delete" class="p-button-danger"></button>
+      <p-button class="button-main" (click)="onCloseModal()" label="" icon="pi pi-times"  styleClass="p-button-outlined p-button-secondary"></p-button>
     </div>
   </div>
 </section>
 <section class="update-modal" [ngClass]="{'showModal': isUpdateModal}">
   <div class="main-form-container">
     <div class="main-form-close">
-      <p-button (click)="onCloseModal()" label="" icon="pi pi-times" styleClass="p-button-secondary"></p-button>
+      <p-button class="button-main" (click)="onCloseModal()" label="" icon="pi pi-times" styleClass="p-button-secondary"></p-button>
     </div>
     <div class="guitar-form-image">
       <img src="{{editGuitar?.imageURL}}">
@@ -77,7 +77,7 @@
         <input placeholder="Image" type="text" [(ngModel)]="editGuitarImageURL" name="imageURL" ngModel>
       </p>
       <p class="submit-button">
-        <p-button type="submit" label="Update" icon="pi pi-check" styleClass="p-button-success"></p-button>
+        <p-button class="button-main" type="submit" label="Update" icon="pi pi-check" styleClass="p-button-success"></p-button>
       </p>
     </form>
   </div>
@@ -85,7 +85,7 @@
 <section class="add-modal" [ngClass]="{'showModal': isAddModal}">
   <div class="main-form-container">
     <div class="main-form-close">
-      <p-button (click)="onCloseModal()" label="" icon="pi pi-times" styleClass="p-button-secondary"></p-button>
+      <p-button class="button-main" (click)="onCloseModal()" label="" icon="pi pi-times" styleClass="p-button-secondary"></p-button>
     </div>
     <form id="add-form" #addForm="ngForm" (ngSubmit)="onAddGuitar(addForm)">
       <p>
@@ -111,7 +111,7 @@
       </p>
       <div class="add-form-submit">
         <p class="submit-button">
-          <p-button type="submit" label="Add" icon="pi pi-check" styleClass="p-button-success"></p-button>
+          <p-button class="button-main" type="submit" label="Add" icon="pi pi-check" styleClass="p-button-success"></p-button>
         </p>
       </div>
     </form>
@@ -125,9 +125,9 @@
         <input placeholder="id" type="text" [(ngModel)]="editGuitarId"  name="id" ngModel>
       </p>
       <p class="submit-button">
-        <p-button type="submit" label="Yes" icon="pi pi-check" styleClass="p-button-success"></p-button>
+        <p-button class="button-main" type="submit" label="Yes" icon="pi pi-check" styleClass="p-button-success"></p-button>
       </p>
-      <p-button (click)="onCloseModal()" label="No" icon="pi pi-times" styleClass="p-button-danger"></p-button>
+      <p-button class="button-main" (click)="onCloseModal()" label="No" icon="pi pi-times" styleClass="p-button-danger"></p-button>
     </form>
   </div>
 </section>
