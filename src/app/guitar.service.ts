@@ -23,9 +23,6 @@ export class GuitarService {
   public deleteGuitar(employeeId: number): Observable<any>{
     return this.http.delete<any>(`${this.apiUrl}/guitar/delete/${employeeId}`);
   }
-  public addImage(image: any): Observable<any>{
-    return this.http.post<any>(`${this.apiUrl}/guitar/upload`, image);
-  }
 
 }
 

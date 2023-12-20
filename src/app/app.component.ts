@@ -121,6 +121,14 @@ export class AppComponent implements OnInit{
           this.isDescriptionModal = true;
           if(guitar != null){
             this.editGuitar = guitar;
+            this.editGuitarId = this.editGuitar.id;
+            this.editGuitarNickname = this.editGuitar.nickname;
+            this.editGuitarMake = this.editGuitar.make;
+            this.editGuitarModel = this.editGuitar.model;
+            this.editGuitarYear = this.editGuitar.year;
+            this.editGuitarColor = this.editGuitar.color;
+            this.editGuitarDescription = this.editGuitar.description;
+            this.editGuitarImageURL = this.editGuitar.imageURL;
           }
           break;
       }
@@ -140,6 +148,9 @@ export class AppComponent implements OnInit{
     }
 
     onAddGuitar(formName: NgForm) {
+      if(formName.value.imageURL == ''){
+        formName.value.imageURL = './assets/unknown_guitar.svg'
+      }
       this.addGuitar(formName.value);
       this.isAddModal = false;
       formName.resetForm();
