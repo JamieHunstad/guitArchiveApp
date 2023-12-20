@@ -188,7 +188,6 @@
   }
   .guitar-detail-container{
     display:block;
-    padding-bottom: 80px;
   }
   .guitar-detail-left{
     width: 100%;
@@ -201,15 +200,14 @@
     border-radius: 5px;
   }
   #guitar-detail-options-container{
-    position:absolute;
-    top: auto;
-    bottom:20px;
-    right: auto;
-    margin: auto;
     display:flex;
+    position: initial;
+    display: -webkit-flex;
+    justify-content: center;
+    flex-direction: column;
   }
   #guitar-detail-options-container button:nth-child(even){
-    margin: 0 10px;
+    margin: 10px 0;
   }
 }
 
