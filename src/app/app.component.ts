@@ -148,7 +148,7 @@ export class AppComponent implements OnInit{
     }
 
     onAddGuitar(formName: NgForm) {
-      if(formName.value.imageURL == ''){
+      if(formName.value.imageURL == '' || formName.value.imageURL.includes('http') == false){
         formName.value.imageURL = './assets/unknown_guitar.svg'
       }
       this.addGuitar(formName.value);
