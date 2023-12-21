@@ -87,6 +87,9 @@
         <p-button type="submit" label="Update" icon="pi pi-check" styleClass="p-button-success"></p-button>
       </p>
     </form>
+    <div class="main-form-close-mobile">
+      <p-button (click)="onCloseModal()" label="" icon="pi pi-times" styleClass="p-button-secondary"></p-button>
+    </div>
   </div>
 </section>
 <section class="add-modal" [ngClass]="{'showModal': isAddModal}">
