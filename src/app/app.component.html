@@ -89,29 +89,29 @@
     </div>
     <form id="add-form" #addForm="ngForm" (ngSubmit)="onAddGuitar(addForm)">
       <p>
-        <input placeholder="Nickname" type="text" name="nickname" ngModel>
+        <input [required] placeholder="Nickname" type="text" name="nickname" ngModel>
       </p>
       <p>
-        <input placeholder="Make" type="text" name="make" ngModel>
+        <input [required] placeholder="Make" type="text" name="make" ngModel>
       </p>
       <p>
-        <input placeholder="Model" type="text" name="model" ngModel>
+        <input [required] placeholder="Model" type="text" name="model" ngModel>
       </p>
       <p>
-        <input placeholder="Year" type="text" name="year" ngModel>
+        <input [required] placeholder="Year" type="text" name="year" ngModel>
       </p>
       <p>
-        <input placeholder="Color" type="text" name="color" ngModel>
+        <input [required] placeholder="Color" type="text" name="color" ngModel>
       </p>
       <p>
-        <input placeholder="Description" type="text" name="description" ngModel>
+        <input [required] placeholder="Description" type="text" name="description" ngModel>
       </p>
       <p>
         <input placeholder="Image URL" type="text" name="imageURL" ngModel>
       </p>
       <div class="add-form-submit">
         <p class="submit-button">
-          <p-button type="submit" label="Add" icon="pi pi-check" styleClass="p-button-success"></p-button>
+          <p-button type="submit" [disabled]="!addForm.valid" label="Add" icon="pi pi-check" styleClass="p-button-success"></p-button>
         </p>
       </div>
     </form>
