@@ -152,14 +152,6 @@
 .image-upload-submit {
   display: none;
 }
-.main-form-close{
-  position: absolute;
-  top: 5px;
-  right: 5px;
-}
-.main-form-close{
-  display: none;
-}
 .guitarForm-file-upload{
     border: solid 1px #d7dfe5;
     padding: 10px 10px;
@@ -215,12 +207,6 @@
   }
   #guitar-detail-options-container button:nth-child(even){
     margin: 10px 0;
-  }
-  .main-form-close{
-    display: none;
-  }
-  .main-form-close-mobile{
-
   }
 }
 

@@ -52,9 +52,6 @@
 </section>
 <section class="update-modal" [ngClass]="{'showModal': isUpdateModal}">
   <div class="main-form-container">
-    <div class="main-form-close">
-      <p-button (click)="onCloseModal()" label="" icon="pi pi-times" styleClass="p-button-secondary"></p-button>
-    </div>
     <div class="guitar-form-image">
       <img src="{{editGuitar?.imageURL}}">
     </div>
@@ -87,16 +84,13 @@
         <p-button type="submit" label="Update" icon="pi pi-check" styleClass="p-button-success"></p-button>
       </p>
     </form>
-    <div class="main-form-close-mobile">
+    <div class="main-form-close">
       <p-button (click)="onCloseModal()" label="" icon="pi pi-times" styleClass="p-button-secondary"></p-button>
     </div>
   </div>
 </section>
 <section class="add-modal" [ngClass]="{'showModal': isAddModal}">
   <div class="main-form-container">
-    <div class="main-form-close">
-      <p-button (click)="onCloseModal()" label="" icon="pi pi-times" styleClass="p-button-secondary"></p-button>
-    </div>
     <form id="add-form" #addForm="ngForm" (ngSubmit)="onAddGuitar(addForm)">
       <p>
         <input required placeholder="Nickname" type="text" name="nickname" ngModel>
@@ -125,6 +119,9 @@
         </p>
       </div>
     </form>
+    <div class="main-form-close">
+      <p-button (click)="onCloseModal()" label="" icon="pi pi-times" styleClass="p-button-secondary"></p-button>
+    </div>
   </div>
 </section>
 <section class="delete-modal" [ngClass]="{'showModal': isDeleteModal}">
