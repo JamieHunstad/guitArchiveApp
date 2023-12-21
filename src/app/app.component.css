@@ -96,8 +96,10 @@
   opacity: 0;
   position: fixed;
   top: 0;
+  left: 0;
+  right: -17px;
   height: 100vh;
-  overflow: hidden;
+  overflow: scroll;
   width: 100%;
   background-color: #dddee5b3;
   backdrop-filter: blur(8px);
