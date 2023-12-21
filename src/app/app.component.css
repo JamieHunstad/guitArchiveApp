@@ -64,6 +64,7 @@
   display: flex;
   column-gap: 10px;
   color: #495057;
+  max-width: 850px;
 }
 .guitar-detail-left{
   width: 50%;
@@ -96,7 +97,7 @@
   position: fixed;
   top: 0;
   height: 100vh;
-  overflow: scroll;
+  overflow: hidden;
   width: 100%;
   background-color: #dddee5b3;
   backdrop-filter: blur(8px);
