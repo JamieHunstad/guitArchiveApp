@@ -76,14 +76,27 @@
       </p>
       <p>
         <input placeholder="Description" [(ngModel)]="editGuitarDescription" type="text" name="description" ngModel>
-      </p>
+      </p><p>
+      <input placeholder="Description" [(ngModel)]="editGuitarDescription" type="text" name="description" ngModel>
+    </p>
+      <p class="add-form-imageData">
       <p>
-        <input placeholder="Image URL" type="text" [(ngModel)]="editGuitarImageURL" name="imageURL" ngModel>
+        <input placeholder="Image" type="text" [(ngModel)]="editGuitarImageURL" name="imageURL" ngModel>
       </p>
       <p class="submit-button">
         <p-button type="submit" label="Update" icon="pi pi-check" styleClass="p-button-success"></p-button>
       </p>
     </form>
+    <div class="image-upload-form">
+      <form #updateImage="ngForm" (ngSubmit)="onUpdateImage(updateImage)">
+        <p>
+          <label for="guitar_img_update" class="guitarForm-file-upload">Edit Image
+            <input #updateImageSelected (change)="updateConvertFileToString()" type="file" id="guitar_img_update" accept="image/png, image/jpeg, image/webp" />
+            <input #updateImageUploadSubmit class="image-upload-submit" type="submit">
+          </label>
+        </p>
+      </form>
+    </div>
     <div class="main-form-close">
       <p-button (click)="onCloseModal()" label="" icon="pi pi-times" styleClass="p-button-secondary"></p-button>
     </div>
@@ -110,15 +123,26 @@
       <p>
         <input required placeholder="Description" type="text" name="description" ngModel>
       </p>
+      <p class="add-form-imageData">
       <p>
-        <input placeholder="Image URL" type="text" name="imageURL" ngModel>
+        <input placeholder="Image" type="text" name="imageURL" ngModel>
       </p>
       <div class="add-form-submit">
         <p class="submit-button">
-          <p-button type="submit" [disabled]="!addForm.valid" label="Add" icon="pi pi-check" styleClass="p-button-success"></p-button>
+          <p-button type="submit" label="Add" icon="pi pi-check" styleClass="p-button-success"></p-button>
         </p>
       </div>
     </form>
+    <div class="image-upload-form">
+      <form #addImage="ngForm" (ngSubmit)="onAddImage(addImage)">
+        <p>
+          <label for="guitar_img_add" class="guitarForm-file-upload">Edit Image
+            <input #imageSelected (change)="convertFileToString()" type="file" id="guitar_img_add" accept="image/png, image/jpeg, image/webp" />
+            <input #imageUploadSubmit class="image-upload-submit" type="submit">
+          </label>
+        </p>
+      </form>
+    </div>
     <div class="main-form-close">
       <p-button (click)="onCloseModal()" label="" icon="pi pi-times" styleClass="p-button-secondary"></p-button>
     </div>

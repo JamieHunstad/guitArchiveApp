@@ -43,28 +43,28 @@ export class AppComponent implements OnInit{
   constructor(private guitarService: GuitarService) {
   }
 
-    public getGuitars():void{
-      this.guitarService.getGuitars().subscribe({
-        next: (response: Guitar[]) => {
-          this.guitars = response;
-        },
-        error: (error: HttpErrorResponse) => {
-          alert(error.message);
-        }
-      })
-    }
-
-    public addGuitar(formValue: Guitar):void{
-      this.guitarService.addGuitar(formValue).subscribe({
-        next: (response: Guitar[]) =>{
-          this.guitars = response;
-          this.getGuitars();
-        },
-        error: (error: HttpErrorResponse) =>{
-          alert(error.message);
+  public getGuitars():void{
+    this.guitarService.getGuitars().subscribe({
+      next: (response: Guitar[]) => {
+        this.guitars = response;
+      },
+      error: (error: HttpErrorResponse) => {
+        alert(error.message);
       }
-      })
-    }
+    })
+  }
+
+  public addGuitar(formValue: Guitar):void{
+    this.guitarService.addGuitar(formValue).subscribe({
+      next: (response: Guitar[]) =>{
+        this.guitars = response;
+        this.getGuitars();
+      },
+      error: (error: HttpErrorResponse) =>{
+        alert(error.message);
+      }
+    })
+  }
 
   public updateGuitar(formValue: Guitar):void{
     this.guitarService.updateGuitar(formValue).subscribe({
@@ -78,7 +78,7 @@ export class AppComponent implements OnInit{
     })
   }
 
-    public deleteGuitar(employeeId: number): void{
+  public deleteGuitar(employeeId: number): void{
     this.guitarService.deleteGuitar(employeeId).subscribe({
       next: (response: Guitar[]) =>{
         this.guitars = response;
@@ -88,77 +88,139 @@ export class AppComponent implements OnInit{
         alert(error.message);
       }
     })
-    }
+  }
 
 
-    onOpenModal(type: string, guitar: Guitar | null): void {
-      switch(type){
-        case "add":
-          this.isAddModal = true;
-          break;
-        case "update":
-          this.isUpdateModal = true;
-          if(guitar != null){
-            this.editGuitar = guitar;
-            this.editGuitarId = this.editGuitar.id;
-            this.editGuitarNickname = this.editGuitar.nickname;
-            this.editGuitarMake = this.editGuitar.make;
-            this.editGuitarModel = this.editGuitar.model;
-            this.editGuitarYear = this.editGuitar.year;
-            this.editGuitarColor = this.editGuitar.color;
-            this.editGuitarDescription = this.editGuitar.description;
-            this.editGuitarImageURL = this.editGuitar.imageURL;
-          }
-          break;
-        case "delete":
-          this.isDeleteModal = true;
-          if(guitar != null){
-            this.editGuitar = guitar;
-            this.editGuitarId = this.editGuitar.id;
-          }
-          break;
-        case "description":
-          this.isDescriptionModal = true;
-          if(guitar != null){
-            this.editGuitar = guitar;
-            this.editGuitarId = this.editGuitar.id;
-            this.editGuitarNickname = this.editGuitar.nickname;
-            this.editGuitarMake = this.editGuitar.make;
-            this.editGuitarModel = this.editGuitar.model;
-            this.editGuitarYear = this.editGuitar.year;
-            this.editGuitarColor = this.editGuitar.color;
-            this.editGuitarDescription = this.editGuitar.description;
-            this.editGuitarImageURL = this.editGuitar.imageURL;
-          }
-          break;
+  public addImage(formValue: any):void{
+    this.guitarService.addImage(formValue).subscribe({
+      next: (response: any) =>{
+        console.log("ran");
+      },
+      error: (error: HttpErrorResponse) =>{
+        alert(error.message);
       }
-    }
+    })
+  }
 
-    onCloseModal(): void{
-      this.isUpdateModal = false;
-      this.isDeleteModal = false;
-      this.isAddModal = false;
-      this.isDescriptionModal = false;
-    }
 
-    onDeleteGuitar(formName: NgForm){
-      let employeeId = formName.value.id;
-      this.deleteGuitar(employeeId);
-      this.isDeleteModal = false;
+  onOpenModal(type: string, guitar: Guitar | null): void {
+    switch(type){
+      case "add":
+        this.isAddModal = true;
+        break;
+      case "update":
+        this.isUpdateModal = true;
+        if(guitar != null){
+          this.editGuitar = guitar;
+          this.editGuitarId = this.editGuitar.id;
+          this.editGuitarNickname = this.editGuitar.nickname;
+          this.editGuitarMake = this.editGuitar.make;
+          this.editGuitarModel = this.editGuitar.model;
+          this.editGuitarYear = this.editGuitar.year;
+          this.editGuitarColor = this.editGuitar.color;
+          this.editGuitarDescription = this.editGuitar.description;
+          this.editGuitarImageURL = this.editGuitar.imageURL;
+        }
+        break;
+      case "delete":
+        this.isDeleteModal = true;
+        if(guitar != null){
+          this.editGuitar = guitar;
+          this.editGuitarId = this.editGuitar.id;
+        }
+        break;
+      case "description":
+        this.isDescriptionModal = true;
+        if(guitar != null){
+          this.editGuitar = guitar;
+          this.editGuitarId = this.editGuitar.id;
+          this.editGuitarNickname = this.editGuitar.nickname;
+          this.editGuitarMake = this.editGuitar.make;
+          this.editGuitarModel = this.editGuitar.model;
+          this.editGuitarYear = this.editGuitar.year;
+          this.editGuitarColor = this.editGuitar.color;
+          this.editGuitarDescription = this.editGuitar.description;
+          this.editGuitarImageURL = this.editGuitar.imageURL;
+        }
+        break;
     }
+  }
 
-    onAddGuitar(formName: NgForm) {
-      if(formName.value.imageURL == '' || formName.value.imageURL.includes('http') == false){
-        formName.value.imageURL = './assets/unknown_guitar.svg'
-      }
-      this.addGuitar(formName.value);
-      this.isAddModal = false;
-      formName.resetForm();
+  onCloseModal(): void{
+    this.isUpdateModal = false;
+    this.isDeleteModal = false;
+    this.isAddModal = false;
+    this.isDescriptionModal = false;
+  }
+
+  convertFileToString(): void{
+    // @ts-ignore
+    let inputElement: HTMLInputElement = this.selectedImage.nativeElement;
+    // @ts-ignore
+    let files: FileList = inputElement.files;
+    if (files.length > 0) {
+      let selectedFile: File = files[0];
+      this.imageFile = selectedFile;
+      this.selectedImageString = selectedFile.name;
+    } else{
+      return undefined;
     }
+  }
 
-    onUpdateGuitar(formName: NgForm): void{
+  updateConvertFileToString(): void{
+    // @ts-ignore
+    let inputElement: HTMLInputElement = this.updateSelectedImage.nativeElement;
+    // @ts-ignore
+    let files: FileList = inputElement.files;
+
+    if (files.length > 0) {
+      let selectedFile: File = files[0];
+      this.imageFile = selectedFile;
+      this.selectedImageString = selectedFile.name;
+    } else{
+      return undefined;
+    }
+  }
+
+  onAddImage(formName: NgForm){
+    const formData = new FormData();
+    formData.append('file', this.imageFile);
+    this.addImage(formData);
+  }
+
+  onUpdateImage(formName: NgForm){
+    const formData = new FormData();
+    formData.append('file', this.imageFile);
+    this.addImage(formData);
+  }
+
+
+
+  onDeleteGuitar(formName: NgForm){
+    let employeeId = formName.value.id;
+    this.deleteGuitar(employeeId);
+    this.isDeleteModal = false;
+  }
+
+  onAddGuitar(formName: NgForm) {
+    this.imageUploadSubmit?.nativeElement.click();
+    formName.value.imageURL = "amazon url" + this.selectedImageString;
+    if(this.selectedImageString == ''){
+      formName.value.imageURL = './assets/unknown_guitar.svg'
+    }
+    this.addGuitar(formName.value);
+    this.isAddModal = false;
+    formName.resetForm();
+  }
+
+  onUpdateGuitar(formName: NgForm): void{
+    this.updateImageUploadSubmit?.nativeElement.click();
+    formName.value.imageURL = "amazon url" + this.selectedImageString;
+    if(this.selectedImageString == ''){
+      formName.value.imageURL = './assets/unknown_guitar.svg'
+    }
     this.updateGuitar(formName.value);
     this.isUpdateModal = false;
     formName.resetForm();
-    }
+  }
 }
