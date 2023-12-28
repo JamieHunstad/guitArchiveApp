@@ -115,7 +115,7 @@
   background-color: #f8f9ffb5;
   border: solid 1px #dfe7ef;
   border-radius: 10px;
-  padding: 50px 50px;
+  padding: 50px 50px 90px 50px;
   position: relative;
   top: 150px;
   width: 50%;
@@ -140,8 +140,14 @@
 .add-form-imageData{
   display: none;
 }
-.add-form-submit{
+.add-form-submit, .update-form-submit{
   width: 170px;
+  position: absolute;
+  bottom: 55px;
+}
+.main-form-close{
+  position: absolute;
+  bottom: 10px;
 }
 .image-upload-form{
   margin-bottom: 20px;
