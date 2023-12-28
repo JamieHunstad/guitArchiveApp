@@ -111,11 +111,16 @@
 .add-modal, .guitar-detail{
   padding-bottom: 200px;
 }
+.add-modal .main-form-container, .update-modal .main-form-container{
+  padding: 50px 50px 90px 50px;
+}
+.delete-modal .main-form-container{
+  padding: 50px 50px;
+}
 .main-form-container{
   background-color: #f8f9ffb5;
   border: solid 1px #dfe7ef;
   border-radius: 10px;
-  padding: 50px 50px 90px 50px;
   position: relative;
   top: 150px;
   width: 50%;
