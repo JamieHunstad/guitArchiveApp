@@ -13,7 +13,7 @@
   <div *ngFor="let guitar of guitars" class="card-container">
     <p-card header="{{guitar.nickname}}" subheader="{{guitar.make + ' ' +  guitar.model}}" [style]="{ width: '250px' }">
       <ng-template pTemplate="header">
-        <img (click)="onOpenModal('description',guitar)" alt="Card" src="{{guitar.imageURL}}" />
+        <img (click)="onOpenModal('description',guitar)" alt="Guitar Image" src="{{guitar.imageURL}}" />
       </ng-template>
       <ng-template pTemplate="footer">
         <p-button (click)="onOpenModal('update', guitar)" label="" icon="pi pi-pencil"  styleClass="p-button-outlined"></p-button>

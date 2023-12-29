@@ -189,9 +189,11 @@ export class AppComponent implements OnInit{
   }
 
   onAddImage(formName: NgForm){
-    const formData = new FormData();
-    formData.append('file', this.imageFile);
-    this.addImage(formData);
+    if (this.imageFile != ''){
+      const formData = new FormData();
+      formData.append('file', this.imageFile);
+      this.addImage(formData);
+    }
   }
 
   onUpdateImage(formName: NgForm){
