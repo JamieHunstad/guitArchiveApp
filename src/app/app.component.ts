@@ -20,11 +20,11 @@ export class AppComponent implements OnInit{
   public isAddModal: boolean = false;
   public isDescriptionModal: boolean = false;
 
-  @ViewChild('imageSelected') selectedImage: ElementRef | undefined;
+  @ViewChild('imageSelected') selectedImage: ElementRef | String | undefined;
   @ViewChild('imageUploadSubmit') imageUploadSubmit: ElementRef | undefined;
   @ViewChild('updateImageSelected') updateSelectedImage: ElementRef | undefined;
   @ViewChild('updateImageUploadSubmit') updateImageUploadSubmit: ElementRef | undefined;
-  public selectedImageString: string | undefined;
+  public selectedImageString: string | undefined = '';
   public editGuitar:  Guitar | undefined | null;
   public editGuitarId: any;
   public editGuitarNickname: any;
@@ -189,7 +189,8 @@ export class AppComponent implements OnInit{
   }
 
   onAddImage(formName: NgForm){
-    if (this.imageFile != ''){
+    console.log(this.selectedImageString);
+    if (this.selectedImageString != ''){
       const formData = new FormData();
       formData.append('file', this.imageFile);
       this.addImage(formData);
@@ -197,9 +198,14 @@ export class AppComponent implements OnInit{
   }
 
   onUpdateImage(formName: NgForm){
-    const formData = new FormData();
-    formData.append('file', this.imageFile);
-    this.addImage(formData);
+    if (this.selectedImageString != ''){
+      const formData = new FormData();
+      formData.append('file', this.imageFile);
+      this.addImage(formData);
+    } else {
+      // @ts-ignore
+      this.selectedImageString = this.editGuitar.imageURL;
+    }
   }
 
 
@@ -214,9 +220,10 @@ export class AppComponent implements OnInit{
     this.imageUploadSubmit?.nativeElement.click();
     formName.value.imageURL = "https://guitarchiveimages.blob.core.windows.net/guitarchivecontainer/" + this.selectedImageString;
     if(this.selectedImageString == ''){
-      formName.value.imageURL = './assets/unknown_guitar.svg'
+      formName.value.imageURL = './assets/unknown_guitar.svg';
     }
     this.addGuitar(formName.value);
+    this.selectedImageString = '';
     this.isAddModal = false;
     formName.resetForm();
   }
