@@ -227,7 +227,7 @@ export class AppComponent implements OnInit{
 
   onUpdateGuitar(formName: NgForm): void{
     this.updateImageUploadSubmit?.nativeElement.click();
-    formName.value.imageURL = this.selectedImageString;
+    formName.value.imageURL = "https://guitarchiveimages.blob.core.windows.net/guitarchivecontainer/" + this.selectedImageString;
     if(this.selectedImageString == ''){
       // @ts-ignore
       formName.value.imageURL = this.editGuitar.imageURL;
