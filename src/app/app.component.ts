@@ -58,7 +58,10 @@ export class AppComponent implements OnInit{
     this.guitarService.addGuitar(formValue).subscribe({
       next: (response: Guitar[]) =>{
         this.guitars = response;
-        this.getGuitars();
+        // Half second delay to allow for image to be added to Azure
+        setTimeout(() =>{
+          this.getGuitars();
+        }, 500);
       },
       error: (error: HttpErrorResponse) =>{
         alert(error.message);
@@ -70,7 +73,10 @@ export class AppComponent implements OnInit{
     this.guitarService.updateGuitar(formValue).subscribe({
       next: (response: Guitar[]) =>{
         this.guitars = response;
-        this.getGuitars();
+        // Half second delay to allow for image to be added to Azure
+        setTimeout(() =>{
+          this.getGuitars();
+        }, 500);
       },
       error: (error: HttpErrorResponse) =>{
         alert(error.message);
