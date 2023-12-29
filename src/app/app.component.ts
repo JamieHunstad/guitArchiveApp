@@ -202,9 +202,6 @@ export class AppComponent implements OnInit{
       const formData = new FormData();
       formData.append('file', this.imageFile);
       this.addImage(formData);
-    } else {
-      // @ts-ignore
-      this.selectedImageString = this.editGuitar.imageURL;
     }
   }
 
@@ -232,7 +229,8 @@ export class AppComponent implements OnInit{
     this.updateImageUploadSubmit?.nativeElement.click();
     formName.value.imageURL = this.selectedImageString;
     if(this.selectedImageString == ''){
-      formName.value.imageURL = './assets/unknown_guitar.svg'
+      // @ts-ignore
+      formName.value.imageURL = this.editGuitar.imageURL;
     }
     this.updateGuitar(formName.value);
     this.isUpdateModal = false;
