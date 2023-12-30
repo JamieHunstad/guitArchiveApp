@@ -61,7 +61,7 @@ export class AppComponent implements OnInit{
         // Half second delay to allow for image to be added to Azure
         setTimeout(() =>{
           this.getGuitars();
-        }, 500);
+        }, 1000);
       },
       error: (error: HttpErrorResponse) =>{
         alert(error.message);

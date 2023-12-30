@@ -29,4 +29,4 @@ For a full history of commits previous to being deployed on Heroku, please revie
 
 ## Deployment
 
-This project is deployed on Heroku. You can access it [here](https://your-heroku-app-url).
+This project is deployed on Heroku. You can access it [here](https://guitararchive-app-3f4567fa06fe.herokuapp.com/).
