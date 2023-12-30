@@ -1,27 +1,32 @@
-# GuitarchiveFrontend
+# Guitar Collection CRUD Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.2.
+Welcome to GuitArchive CRUD application! This project is designed to help you manage and organize your guitar collection. The application consists of a Java Spring Boot backend, a PostgreSQL database, an Angular frontend utilizing the PrimeNG library, and is hosted on Heroku.
 
-## Development server
+## Technologies Used
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Java Spring Boot
+- PostgreSQL
+- Angular with PrimeNG
+- Heroku
 
-## Code scaffolding
+## GIT History
+GIT repositories post Heroku set-up.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- [Front-End](https://github.com/JamieHunstad/guitArchiveApp)
+- [Back-End](https://github.com/JamieHunstad/guitArchiveService)
 
-## Build
+For a full history of commits previous to being deployed on Heroku, please review the following GIT repositories:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- [Front-End](https://github.com/JamieHunstad/guitArchive_Frontend)
+- [Back-End](https://github.com/JamieHunstad/guitArchive)
 
-## Running unit tests
+## Features
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- CRUD operations on guitar entries
+- User-friendly interface with Angular and PrimeNG
+- Java Spring Boot back-end.
+- Database storage and retrieval with PostgreSQL
 
-## Running end-to-end tests
+## Deployment
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+This project is deployed on Heroku. You can access it [here](https://your-heroku-app-url).
